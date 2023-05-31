@@ -16,7 +16,7 @@ import c_iterative_queue as Queue_iter
 import c_recursive_queue as Queue_rec
 
 # PLOT CONFIG
-plt.suptitle('Stapleton - Lab 6 Analysis')
+plt.suptitle('Kuhn - Lab 6 Analysis')
 
 # CONSTANTS
 N_TRIALS = 100  # TODO run on 20 trials
@@ -313,15 +313,39 @@ for experiment in RESULTS:
     RESULTS[experiment] = RESULTS[experiment] / norm
 
 # YOUR CODE GOES BELOW
-## LIST
+## List
+plt.subplot(1,3,1)
+plt.bar(x=1, height=RESULTS['back  (i)'], label='back  (i)', width=.8, color = 'blue')
+plt.bar(x=1, height=RESULTS['front (i)'], label='front (i)', width=.4, color = 'green')
+plt.bar(x=2, height=RESULTS['back  (r)'], label='back  (r)', width=.8, color = 'orange')
+plt.bar(x=2, height=RESULTS['front (r)'], label='front (r)', width=.4, color = 'red')
+plt.legend()
+plt.yticks([])
+plt.xticks([])
+plt.xlabel('List')
 
 
 ## STACK
-
+plt.subplot(1,3,2)
+plt.bar(x=1, height=RESULTS['push  (i)'], label='push  (i)', width=.8, color = 'blue')
+plt.bar(x=1, height=RESULTS['pop   (i)'], label='pop (i)', width=.4, color = 'green')
+plt.bar(x=2, height=RESULTS['push  (r)'], label='push  (r)', width=.8, color = 'orange')
+plt.bar(x=2, height=RESULTS['pop   (r)'], label='pop (r)', width=.4, color = 'red')
+plt.legend()
+plt.yticks([])
+plt.xticks([])
+plt.xlabel('Stack')
 
 ## QUEUE
-
+plt.subplot(1,3,3)
+plt.bar(x=1, height=RESULTS['enq   (i)'], label='enq  (i)', width=.8, color = 'blue')
+plt.bar(x=1, height=RESULTS['deq   (i)'], label='deq (i)', width=.4, color = 'green')
+plt.bar(x=2, height=RESULTS['enq   (r)'], label='enq  (r)', width=.8, color = 'orange')
+plt.bar(x=2, height=RESULTS['deq   (r)'], label='deq (r)', width=.4, color = 'red')
+plt.legend()
+plt.yticks([])
+plt.xticks([])
+plt.xlabel('Stack')
 
 ## SAVE FIGURE
-plt.savefig('./figs/stapleton_lab6_analysis.png')
-plt.show()
+plt.savefig('./figs/kuhn_lab6_analysis.png')

@@ -1,3 +1,6 @@
+# Recursive Stack
+# Author: Nathan Kuhn
+
 class Node:
     value: any
     next: any
@@ -33,24 +36,48 @@ class Stack:
 
 
 def initialize() -> Stack:
-    raise NotImplementedError("Stack.initialize() not defined")
+    return Stack()
 
 
 def isEmpty(data: Stack) -> bool:
-    raise NotImplementedError("Stack.isEmpty() not defined")
+    return data.first == None
 
 
 def push(data: Stack, value: int) -> Stack:
-    raise NotImplementedError("Stack.push() not defined")
+    data.first = Node(value, data.first)
+    return data
 
 
 def pop(data: Stack) -> tuple[Node, Stack]:
-    raise NotImplementedError("Stack.pop() not defined")
+    node = data.first
+    data.first = data.first.next
+    return [node, data]
 
 
 def peek(data: Stack) -> Node:
-    raise NotImplementedError("Stack.peek() not defined")
+    return data.first
 
 
 def clear(data: Stack) -> Stack:
-    raise NotImplementedError("Stack.clear() not defined")
+    data = Stack()
+    return data
+
+
+'''nums = initialize()
+print(Stack.toPythonList(nums))
+print()
+
+nums = push(nums,1)
+print(Stack.toPythonList(nums))
+print()
+
+nums = push(nums,2)
+print(Stack.toPythonList(nums))
+print()
+
+nums = pop(nums)
+print(nums[0].value, Stack.toPythonList(nums[1]))
+nums = nums[1]
+print()
+
+print(peek(nums).value)'''

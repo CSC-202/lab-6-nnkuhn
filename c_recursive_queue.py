@@ -1,3 +1,6 @@
+# Recursive Queue
+# Author: Nathan Kuhn
+
 class Node:
     value: any
     next: any
@@ -33,24 +36,54 @@ class Queue:
 
 
 def initialize() -> Queue:
-    raise NotImplementedError("Queue.initialize() not defined")
+    return Queue()
 
 
 def isEmpty(data: Queue) -> bool:
-    raise NotImplementedError("Queue.isEmpty() not defined")
+    return data.first == None
 
 
 def enqueue(data: Queue, value: int) -> Queue:
-    raise NotImplementedError("Queue.enqueue() not defined")
+    if data.last is None:
+        data.last = Node(value, None)
+        data.first = data.last
+        return data
+    else:
+        data.last.next = Node(value,None)
+        data.last = data.last.next
+        return data
 
 
 def dequeue(data: Queue) -> tuple[Node, Queue]:
-    raise NotImplementedError("Queue.dequeue() not defined")
+    node = data.first
+    data.first = data.first.next
+    return [node, data]
 
 
 def peek(data: Queue) -> Node:
-    raise NotImplementedError("Queue.peek() not defined")
+    return data.first
 
 
 def clear(data: Queue) -> Queue:
-    raise NotImplementedError("Queue.clear() not defined")
+    data = Queue()
+    return data
+
+
+'''nums = initialize()
+print(Queue.toPythonList(nums))
+print()
+
+nums = enqueue(nums,1)
+print(Queue.toPythonList(nums))
+print()
+
+nums = enqueue(nums,2)
+print(Queue.toPythonList(nums))
+print()
+
+nums = dequeue(nums)
+print(nums[0].value, Queue.toPythonList(nums[1]))
+nums = nums[1]
+print()
+
+print(peek(nums).value)'''
